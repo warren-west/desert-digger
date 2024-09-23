@@ -7,11 +7,28 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div id="container"></div>
+
     <script src="jquery.js"></script>
     <script>
         // Our JavaScript needs to come after the JQuery script tag!
-        
+        $("document").ready(function() {
+            // This is where we put everything we want to happen when the page is ready
+
+            // add 9 divs to "container"
+            for (let row = 0; row < 3; row++) { 
+                for (let col = 0; col < 3; col++) {
+                    console.log(row + " " + col)
+                    // add a new div to the container
+                    $("#container").append("<div class='box'>" + row + " " + col + "</div>")
+                }
+
+                // Create a break before the new row
+                $("#container").append("<br>")
+
+                console.log("NEW ROW")
+            }
+        })
 
     </script>
 </body>
