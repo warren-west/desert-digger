@@ -28,6 +28,27 @@
 
                 console.log("NEW ROW")
             }
+
+            // Generate a location for the treasure
+            let treasureCoordinate = getRandomCoordinate(3, 3)
+
+            // A function that returns a random coordinate
+            // given the row and column lengths of the grid
+            function getRandomCoordinate(rowLength, colLength) {
+                // if rowLength is 3 and colLength is 3, return anywhere between
+                // 0,0 and 2,2
+
+                let returnCoordinates = [] // x, y
+
+                // first random value
+                returnCoordinates.push(Math.trunc(Math.random() * rowLength))
+                // second random value
+                returnCoordinates.push(Math.trunc(Math.random() * colLength))
+
+                console.log(returnCoordinates)
+                
+                return returnCoordinates
+            }
         })
 
     </script>
