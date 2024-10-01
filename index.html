@@ -20,7 +20,8 @@
                 for (let col = 0; col < 3; col++) {
                     console.log(row + " " + col)
                     // add a new div to the container
-                    $("#container").append("<div class='box'>" + row + " " + col + "</div>")
+                    // TODO: Add an image inside the div instead of ???
+                    $("#container").append(`<div class='box' name='${row}${col}'>???</div>`)
                 }
 
                 // Create a break before the new row
@@ -29,8 +30,27 @@
                 console.log("NEW ROW")
             }
 
+            $(".box").on("click", checkClickedTreasure)
+            
             // Generate a location for the treasure
-            let treasureCoordinate = getRandomCoordinate(3, 3)
+            let treasureLocation = getRandomCoordinate(3, 3)
+            
+            function checkClickedTreasure() {
+
+                // check if treasureLocation is the same as click location
+                console.log("Treasure:", treasureLocation)
+                console.log("You clicked: ", $(this).attr("name"))
+
+
+                // TODO: Replace console logs with alerts or message to the user.
+                if (treasureLocation === $(this).attr("name"))
+                    console.log("💎")
+                else
+                    console.log("😭")
+            }
+
+            // rgba (red, green, blue, alpha)
+            // e.g.: (255, 115, 15, 0%)
 
             // A function that returns a random coordinate
             // given the row and column lengths of the grid
@@ -38,13 +58,8 @@
                 // if rowLength is 3 and colLength is 3, return anywhere between
                 // 0,0 and 2,2
 
-                let returnCoordinates = [] // x, y
-
-                // first random value
-                returnCoordinates.push(Math.trunc(Math.random() * rowLength))
-                // second random value
-                returnCoordinates.push(Math.trunc(Math.random() * colLength))
-
+                // "x y"
+                let returnCoordinates =  `${Math.trunc(Math.random() * rowLength)}${Math.trunc(Math.random() * colLength)}`                
                 console.log(returnCoordinates)
                 
                 return returnCoordinates
